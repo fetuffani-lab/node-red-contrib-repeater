@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('repeater-node', {
+        category: 'function',
+        color: '#D6EAF8',
+        defaults: {
+            name: { value: "" },
+            interval: { value: 5, required: true, validate: RED.validators.number() }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "repeater.png",
+        label: function () {
+            return this.name || "repeater";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="repeater-node">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Nome</label>
+        <input type="text" id="node-input-name" placeholder="Nome opcional">
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-clock-o"></i> Intervalo (s)</label>
+        <input type="number" id="node-input-interval" placeholder="5">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="repeater-node">
+    <p>Este nó propaga o último dado recebido a cada X segundos.</p>
+    <h3>Configuração:</h3>
+    <ul>
+        <li><b>Intervalo (s):</b> Define o tempo em segundos para a repetição.</li>
+        <li>Ao receber um novo <code>msg</code>, o timer é reiniciado.</li>
+    </ul>
+</script>
