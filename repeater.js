@@ -3,33 +3,33 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, config);
         const node = this;
 
-        // Configuração do intervalo (definido pelo usuário no editor)
-        let interval = parseInt(config.interval) * 1000 || 1000; // Tempo em ms
-        let timer = null; // Referência do timer
-        let lastMessage = null; // Armazena o último msg recebido
+        // Configuration for the interval (defined by the user in the editor)
+        let interval = parseInt(config.interval) * 1000 || 1000; // Time in ms
+        let timer = null; // Timer reference
+        let lastMessage = null; // Stores the last received msg
 
-        // Função para propagar o último dado
+        // Function to propagate the last data
         function propagate() {
             if (lastMessage !== null) {
                 node.send(lastMessage);
             }
         }
 
-        // Ao receber um novo "msg" de entrada
+        // When receiving a new "msg" as input
         node.on('input', function (msg) {
-            lastMessage = msg; // Salva o último dado recebido
+            lastMessage = msg; // Save the last received data
             
-            // Reinicia o timer
+            // Restart the timer
             if (timer) clearInterval(timer);
             timer = setInterval(propagate, interval);
         });
 
-        // Quando o nó é finalizado (ex: Node-RED reinicia)
+        // When the node is closed (e.g., Node-RED restarts)
         node.on('close', function () {
             if (timer) clearInterval(timer);
         });
     }
 
-    // Registra o nó com o Node-RED
+    // Register the node with Node-RED
     RED.nodes.registerType('repeater-node', RepeaterNode);
 };
