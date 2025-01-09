@@ -1,5 +1,5 @@
 {
-	"name": "node-red-contrib-repeater",
+	"name": "@fetuffani/node-red-contrib-repeater",
 	"version": "1.0.1",
 	"description": "Node-RED node to replicate the last message received every X seconds",
 	"main": "repeater.js",
