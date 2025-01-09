@@ -4,23 +4,23 @@
 	"description": "Node-RED node to replicate the last message received every X seconds",
 	"main": "repeater.js",
 	"scripts": {
-	  "test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [
-	  "node-red",
-	  "repeater",
-	  "node"
+		"node-red",
+		"repeater",
+		"node"
 	],
 	"node-red": {
-	  "nodes": {
-		"repeater": "repeater.js"
-	  }
+		"version": ">=2.0.0",
+		"nodes": {
+			"repeater": "repeater.js"
+		}
 	},
 	"author": "Felipe Tuffani",
 	"license": "MIT",
 	"repository": {
-	  "type": "git",
-	  "url": "https://github.com/fetuffani-lab/node-red-contrib-repeater.git"
+		"type": "git",
+		"url": "https://github.com/fetuffani-lab/node-red-contrib-repeater.git"
 	}
-  }
-  
+}
